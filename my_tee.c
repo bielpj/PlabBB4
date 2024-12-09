@@ -15,5 +15,19 @@ int main(int argc, char *argv[]) {
   }
   char buffer[1];
   while (read(STDIN_FILENO, buffer, 1) > 0) {
+    if (write(STDOUT_FILENO, buffer, 1) == -1) {
+      perror("Error al escriure en la sortida estandard");
+      exit(-1);
+    }
+    
+    if (write(fd, buffer, 1) == -1) {
+      perror("Error al escriure en l'arxiu");
+      exit(-1);
+    
+    }
+  }
+
+
+    
 
 
