@@ -3,7 +3,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-int main(int argc, char *argv[]) {
+int my_tee(int argc, char *argv[]) {
   if (argc < 2) {
       fprintf(stderr, "Error: Falta el nom de l'arxiu.\n");
       return -1;
@@ -19,14 +19,14 @@ int main(int argc, char *argv[]) {
       perror("Error al escriure en la sortida estandard");
       exit(-1);
     }
-    
     if (write(fd, buffer, 1) == -1) {
       perror("Error al escriure en l'arxiu");
       exit(-1);
-    
     }
   }
-
+  close(fd);
+  return 0;
+}
 
     
 
